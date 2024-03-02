@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import "./index.css"
 import "./output.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon as fasFaMoon } from '@fortawesome/free-solid-svg-icons';
-import { faMoon as farFaMoon } from '@fortawesome/free-regular-svg-icons';
+import { IconMoon, IconSun } from './components/Icons'
 import { faBook as book } from '@fortawesome/free-solid-svg-icons';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import ToggleSwitch from './components/ToggleSwitch'
 
 const getSystemColorScheme = () => window.matchMedia('(prefers-color-scheme: dark').matches ? 'dark' : 'light';
 
@@ -13,8 +13,9 @@ const App = () => {
   const storedTheme = localStorage.getItem('theme')
   const defaultTheme = storedTheme || getSystemColorScheme();
   const [theme, setTheme] = useState(defaultTheme);
+  const icon = theme === 'dark' ? IconMoon : IconSun;
 
-  const swtichTheme = () => {
+  const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     document.documentElement.classList.toggle('dark', newTheme === 'dark')
@@ -28,15 +29,27 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`App ${theme === 'dark' ? 'dark' : ''}} bg-white dark:bg-darkBg`}>
+      <div className={`App ${theme === 'dark' ? 'dark' : ''} bg-white dark:bg-darkBg`}>
         <nav className="shadow-lg bg-white dark:bg-darkElement ">
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
-            <div className="flex justify-between  dark:text-white sm:px-20 px-10">
+            <div className="flex justify-between  dark:text-white sm:px-20 px-10 divide-x divide-darkGray">
               <Link to="/" className="md:text-2xl text-lg font-bold"><FontAwesomeIcon icon={book} /></Link>
-              <button className="flex items-center gap-2 md:gap-4" onClick={swtichTheme}>
-                <FontAwesomeIcon icon={theme === 'dark' ? fasFaMoon : farFaMoon} />
-                <span className="md:text-xl">Dark Mode</span>
-              </button>
+
+              <div className="flex items-center pl-6 gap-4">
+                <ToggleSwitch onToggle={switchTheme} />
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill={icon.fill || "none"}
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke={icon.stroke || "none"}
+                  strokeWidth={icon.strokeWidth || "0"}
+                >
+                  <path d={icon.path} />
+                </svg>
+              </div>
+
             </div>
           </div>
         </nav>
