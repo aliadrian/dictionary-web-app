@@ -31,7 +31,7 @@ const FontMenu = () => {
           <div className="py-1">
             <Menu.Item>
               {selectedFont === 'serif' ? (
-                <a
+                <button
                   onClick={() => {
                     setTimeout(() => {
                       toggleFont();
@@ -40,9 +40,9 @@ const FontMenu = () => {
                   className="block px-4 py-2 lg:text-lg text-sm font-sans"
                 >
                   Sans-Serif
-                </a>
+                </button>
               ) : (
-                <a
+                <button
                   onClick={() => {
                     setTimeout(() => {
                       toggleFont();
@@ -51,7 +51,7 @@ const FontMenu = () => {
                   className="block px-4 py-2 lg:text-lg text-sm font-serif"
                 >
                   Serif
-                </a>
+                </button>
               )}
             </Menu.Item>
           </div>
