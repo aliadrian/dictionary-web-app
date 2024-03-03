@@ -35,17 +35,18 @@ const App = () => {
         <nav className="shadow-lg bg-white dark:bg-darkElement ">
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
             <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
-              <Link to="/" className="md:text-2xl text-lg font-bold"><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill={icon.fill || "none"}
-                xmlns="http://www.w3.org/2000/svg"
-                stroke={icon.stroke || "none"}
-                strokeWidth={icon.strokeWidth || "0"}
-              >
-                <path d={iconBook.path} />
-              </svg>
+              <Link to="/" className="md:text-2xl text-lg font-bold">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill={icon.fill || "none"}
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke={icon.stroke || "none"}
+                  strokeWidth={icon.strokeWidth || "0"}
+                >
+                  <path d={iconBook.path} />
+                </svg>
               </Link>
               <div className="flex items-center pl-6 gap-4 divide-x divide-darkGray">
                 <Dropdown />
