@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sans-font {
+  font-family: "ui-sans-serif", "system-ui";
+}
+
+.serif-font {
+  font-family: "ui-serif", "Georgia";
+}

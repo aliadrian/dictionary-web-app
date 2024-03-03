@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import "./index.css"
 import "./output.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconMoon, IconSun, IconBook } from './components/Icons'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ToggleSwitch from './components/ToggleSwitch'
 import Dropdown from './components/Dropdown'
-import { BookOpenIcon } from '@heroicons/react/20/solid';
+import { useFont } from './components/FontContext'
 
 const getSystemColorScheme = () => window.matchMedia('(prefers-color-scheme: dark').matches ? 'dark' : 'light';
 
 const App = () => {
   const storedTheme = localStorage.getItem('theme')
   const defaultTheme = storedTheme || getSystemColorScheme();
+  const { fontFamily } = useFont();
   const [theme, setTheme] = useState(defaultTheme);
   const icon = theme === 'dark' ? IconMoon : IconSun;
   const iconBook = IconBook;
@@ -31,7 +31,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`App ${theme === 'dark' ? 'dark' : ''} bg-white dark:bg-darkBg`}>
+      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontFamily === 'serif' ? 'serif-font' : 'sans-font'} bg-white dark:bg-darkBg`}>
         <nav className="shadow-lg bg-white dark:bg-darkElement ">
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
             <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
@@ -45,7 +45,8 @@ const App = () => {
                 strokeWidth={icon.strokeWidth || "0"}
               >
                 <path d={iconBook.path} />
-              </svg></Link>
+              </svg>
+              </Link>
               <div className="flex items-center pl-6 gap-4 divide-x divide-darkGray">
                 <Dropdown />
                 <div className='flex items-center gap-4 pl-6'>
@@ -63,10 +64,10 @@ const App = () => {
                   </svg>
                 </div>
               </div>
-
             </div>
           </div>
         </nav>
+        <p>Some text</p>
       </div>
     </Router>
   );
