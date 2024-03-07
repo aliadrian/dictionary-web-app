@@ -843,7 +843,7 @@ video {
 }
 
 .mono-font {
-  font-family: "ui-monospace", "Courier New" !important;
+  font-family: monospace, "monospace";
 }
 
 .focus\:outline-none:focus {
