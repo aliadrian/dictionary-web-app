@@ -9,3 +9,7 @@
 .serif-font {
   font-family: "ui-serif", "Georgia";
 }
+
+.mono-font {
+  font-family: "ui-monospace", "Courier New" !important;
+}

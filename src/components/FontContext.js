@@ -5,8 +5,18 @@ const FontContext = createContext();
 export const FontProvider = ({ children }) => {
   const [fontFamily, setFontFamily] = useState('sans');
 
-  const toggleFont = () => {
-    setFontFamily((prevFont) => (prevFont === 'serif' ? 'sans' : 'serif'))
+  const toggleFont = (newFont) => {
+    setFontFamily(newFont);
+
+    document.body.classList.remove('sans-font', 'serif-font', 'mono-font');
+
+    if (newFont === 'sans') {
+      document.body.classList.add('sans-font');
+    } else if (newFont === 'serif') {
+      document.body.classList.add('serif-font');
+    } else if (newFont === 'mono') {
+      document.body.classList.add('mono-font');
+    }
   }
 
   return (

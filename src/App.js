@@ -16,7 +16,15 @@ const App = () => {
   const { fontFamily } = useFont();
   const [theme, setTheme] = useState(defaultTheme);
   const icon = theme === 'dark' ? IconMoon : IconMoon;
-  // const iconBook = IconBook;
+
+  let fontClass;
+  if (fontFamily === 'serif') {
+    fontClass = 'serif-font';
+  } else if (fontFamily === 'sans') {
+    fontClass = 'sans-font';
+  } else if (fontFamily === 'mono') {
+    fontClass = 'mono-font';
+  }
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -32,7 +40,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontFamily === 'serif' ? 'serif-font' : 'sans-font'} bg-white dark:bg-darkBg`}>
+      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontClass} bg-white dark:bg-darkBg`}>
         <nav className="shadow-lg bg-white dark:bg-darkElement ">
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
             <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
