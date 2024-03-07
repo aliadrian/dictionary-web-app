@@ -1,22 +1,17 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const FontContext = createContext();
 
 export const FontProvider = ({ children }) => {
-  const [fontFamily, setFontFamily] = useState('sans');
+  const storedFontFamily = localStorage.getItem('selectedFont') || 'sans';
+  const [fontFamily, setFontFamily] = useState(storedFontFamily);
+
+  useEffect(() => {
+    localStorage.setItem('selectedFont', fontFamily)
+  })
 
   const toggleFont = (newFont) => {
     setFontFamily(newFont);
-
-    document.body.classList.remove('sans-font', 'serif-font', 'mono-font');
-
-    if (newFont === 'sans') {
-      document.body.classList.add('sans-font');
-    } else if (newFont === 'serif') {
-      document.body.classList.add('serif-font');
-    } else if (newFont === 'mono') {
-      document.body.classList.add('mono-font');
-    }
   }
 
   return (
