@@ -3,10 +3,12 @@ import "./index.css"
 import "./output.css"
 import { IconMoon } from './components/Icons'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useFont } from './components/FontContext'
 import ToggleSwitch from './components/ToggleSwitch'
 import Dropdown from './components/Dropdown'
-import { useFont } from './components/FontContext'
+import Filter from './components/Filter'
 import BookLogo from './assets/svg/book_logo.svg'
+import dictionaryService from './services/dictionaryService'
 
 const getSystemColorScheme = () => window.matchMedia('(prefers-color-scheme: dark').matches ? 'dark' : 'light';
 
@@ -16,6 +18,10 @@ const App = () => {
   const { fontFamily } = useFont();
   const [theme, setTheme] = useState(defaultTheme);
   const icon = theme === 'dark' ? IconMoon : IconMoon;
+  const [userInput, setUserInput] = useState('');
+  const [dictionaryData, setDictionaryData] = useState(null);
+  const [error, setError] = useState(null);
+
 
   let fontClass;
   if (fontFamily === 'serif') {
@@ -33,11 +39,21 @@ const App = () => {
     localStorage.setItem('theme', newTheme);
   }
 
-  const handleWordChange = (e) => {
-    const nameFilter = e.target.value.toLowerCase();
-    setshowFilter(nameFilter);
-    setFilterValue(nameFilter);
-  }
+  const handleInputChange = (event) => {
+    setUserInput(event.target.value.toLowerCase());
+  };
+
+  const handleSearch = async () => {
+    try {
+      const data = await dictionaryService.getAll(userInput);
+      setDictionaryData(data);
+      setError(null);
+    } catch (error) {
+      setDictionaryData(null);
+      setError('Error fetching data. Please try again.');
+      console.error('Error:', error);
+    }
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -46,7 +62,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontClass} bg-white dark:bg-darkBg`}>
+      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontClass} bg-white dark:bg-darkBg transition-colors duration-1000`}>
         <nav className="shadow-lg bg-white dark:bg-darkElement ">
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
             <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
@@ -73,6 +89,7 @@ const App = () => {
             </div>
           </div>
         </nav>
+        <Filter handleSearch={handleSearch} handleInputChange={handleInputChange} />
         <p>Some text</p>
       </div>
     </Router>
