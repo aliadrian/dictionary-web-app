@@ -33,6 +33,12 @@ const App = () => {
     localStorage.setItem('theme', newTheme);
   }
 
+  const handleWordChange = (e) => {
+    const nameFilter = e.target.value.toLowerCase();
+    setshowFilter(nameFilter);
+    setFilterValue(nameFilter);
+  }
+
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.classList.toggle('dark', theme === 'dark');
