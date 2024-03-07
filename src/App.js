@@ -18,9 +18,9 @@ const App = () => {
   const { fontFamily } = useFont();
   const [theme, setTheme] = useState(defaultTheme);
   const icon = theme === 'dark' ? IconMoon : IconMoon;
-  const [userInput, setUserInput] = useState('');
   const [dictionaryData, setDictionaryData] = useState(null);
   const [error, setError] = useState(null);
+  const { word } = dictionaryData?.[0] ?? {}
 
   const handleSearch = async (userInput) => {
     try {
@@ -30,7 +30,6 @@ const App = () => {
       return data;
     } catch (error) {
       setDictionaryData(null);
-      setError('Error fetching data. Please try again.');
       console.error('Error:', error);
       throw error;
     }
@@ -59,16 +58,16 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontClass} bg-white dark:bg-darkBg transition-colors duration-1000`}>
-        <nav className="bg-white dark:bg-darkElement ">
-          <div className="max-w-screen-2xl mx-auto py-6 items-center">
-            <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
+      <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontClass} min-h-dvh dark:bg-black transition-colors duration-500 px-6`}>
+        <nav>
+          <div className="max-w-3xl mx-auto py-6 items-center">
+            <div className="flex justify-between items-center dark:text-white">
               <Link to="/" className="md:text-2xl text-lg font-bold">
                 <img src={BookLogo} alt="Book logo" />
               </Link>
-              <div className="flex items-center pl-6 gap-4 divide-x divide-darkGray">
+              <div className="flex items-center xl:pl-6 xl:gap-4 divide-x divide-gray">
                 <Dropdown />
-                <div className='flex items-center gap-4 pl-6'>
+                <div className='flex items-center gap-2 pl-4 xl:gap-4 xl:pl-6'>
                   <ToggleSwitch onToggle={switchTheme} />
                   <svg
                     width="24"
@@ -86,12 +85,12 @@ const App = () => {
             </div>
           </div>
         </nav>
-        <div className="max-w-screen-2xl mx-auto dark:bg-darkBg sm:px-20 px-10">
+        <div className="max-w-3xl mx-auto dark:text-white">
           <Filter handleSearch={handleSearch} />
           {error && <p>{error}</p>}
           {dictionaryData && (
             <div>
-              <h2>{dictionaryData[0].word}</h2>
+              <h2>{word}</h2>
             </div>
           )}
         </div>

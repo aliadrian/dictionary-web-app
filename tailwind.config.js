@@ -10,8 +10,10 @@ module.exports = {
       "black": "hsl(0, 100%, 0%)",
       "darkElement": "hsl(209, 23%, 22%)",
       "darkBg": "hsl(207, 26%, 17%)",
+      "darkerGray": "hsl(0, 0%, 23%)",
       "darkGray": "hsl(0, 0%, 52%)",
-      "lightGray": "hsl(0, 0%, 92.5%)",
+      "gray": "hsl(0, 0%, 92.5%)",
+      "lightGray": "hsl(0, 0%, 96%)",
       "lighterGray": "hsl(0, 0%, 98%)",
       "purple": "hsl(275, 84.2%, 60.4%)"
     },
