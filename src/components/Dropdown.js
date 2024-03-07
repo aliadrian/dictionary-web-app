@@ -1,9 +1,7 @@
-import { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { useFont } from './FontContext'
-
-// ... (other imports and code)
 
 const FontMenu = () => {
   const [selectedFont, setSelectedFont] = useState('sans');

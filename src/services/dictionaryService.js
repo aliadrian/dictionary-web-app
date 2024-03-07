@@ -4,7 +4,7 @@ const baseUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
 const getAll = async (word) => {
   const url = `${baseUrl}${word}`
   try {
-    const response = axios.get(url);
+    const response = await axios.get(url);
     return response.data
   } catch (error) {
     console.error("Error fetching data:", error.message);

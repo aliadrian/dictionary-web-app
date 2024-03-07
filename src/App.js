@@ -22,6 +22,24 @@ const App = () => {
   const [dictionaryData, setDictionaryData] = useState(null);
   const [error, setError] = useState(null);
 
+  const handleSearch = async (userInput) => {
+    try {
+      const data = await dictionaryService.getAll(userInput);
+      setDictionaryData(data);
+      setError(null);
+      return data;
+    } catch (error) {
+      setDictionaryData(null);
+      setError('Error fetching data. Please try again.');
+      console.error('Error:', error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
 
   let fontClass;
   if (fontFamily === 'serif') {
@@ -39,31 +57,10 @@ const App = () => {
     localStorage.setItem('theme', newTheme);
   }
 
-  const handleInputChange = (event) => {
-    setUserInput(event.target.value.toLowerCase());
-  };
-
-  const handleSearch = async () => {
-    try {
-      const data = await dictionaryService.getAll(userInput);
-      setDictionaryData(data);
-      setError(null);
-    } catch (error) {
-      setDictionaryData(null);
-      setError('Error fetching data. Please try again.');
-      console.error('Error:', error);
-    }
-  };
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.documentElement.classList.toggle('dark', theme === 'dark');
-  }, [theme]);
-
   return (
     <Router>
       <div className={`App ${theme === 'dark' ? 'dark' : ''} ${fontClass} bg-white dark:bg-darkBg transition-colors duration-1000`}>
-        <nav className="shadow-lg bg-white dark:bg-darkElement ">
+        <nav className="bg-white dark:bg-darkElement ">
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
             <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
               <Link to="/" className="md:text-2xl text-lg font-bold">
@@ -79,7 +76,7 @@ const App = () => {
                     viewBox="0 0 24 24"
                     fill={"none"}
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke={theme == "dark" ? "	#a845ef" : "#858585"}
+                    stroke={theme === "dark" ? "	#a845ef" : "#858585"}
                     strokeWidth={icon.strokeWidth || "0"}
                   >
                     <path d={icon.path} />
@@ -89,8 +86,15 @@ const App = () => {
             </div>
           </div>
         </nav>
-        <Filter handleSearch={handleSearch} handleInputChange={handleInputChange} />
-        <p>Some text</p>
+        <div className="max-w-screen-2xl mx-auto dark:bg-darkBg sm:px-20 px-10">
+          <Filter handleSearch={handleSearch} />
+          {error && <p>{error}</p>}
+          {dictionaryData && (
+            <div>
+              <h2>{dictionaryData[0].word}</h2>
+            </div>
+          )}
+        </div>
       </div>
     </Router>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Switch = ({ onToggle }) => {
   const [toggle, setToggle] = useState(true);
