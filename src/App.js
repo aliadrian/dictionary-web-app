@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import "./index.css"
 import "./output.css"
-import { IconMoon, IconSun, IconBook } from './components/Icons'
+import { IconMoon } from './components/Icons'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ToggleSwitch from './components/ToggleSwitch'
 import Dropdown from './components/Dropdown'
 import { useFont } from './components/FontContext'
+import BookLogo from './assets/svg/book_logo.svg'
 
 const getSystemColorScheme = () => window.matchMedia('(prefers-color-scheme: dark').matches ? 'dark' : 'light';
 
@@ -14,8 +15,8 @@ const App = () => {
   const defaultTheme = storedTheme || getSystemColorScheme();
   const { fontFamily } = useFont();
   const [theme, setTheme] = useState(defaultTheme);
-  const icon = theme === 'dark' ? IconMoon : IconSun;
-  const iconBook = IconBook;
+  const icon = theme === 'dark' ? IconMoon : IconMoon;
+  // const iconBook = IconBook;
 
   const switchTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -36,17 +37,7 @@ const App = () => {
           <div className="max-w-screen-2xl mx-auto py-6 items-center">
             <div className="flex justify-between items-center dark:text-white sm:px-20 px-10">
               <Link to="/" className="md:text-2xl text-lg font-bold">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill={icon.fill || "none"}
-                  xmlns="http://www.w3.org/2000/svg"
-                  stroke={icon.stroke || "none"}
-                  strokeWidth={icon.strokeWidth || "0"}
-                >
-                  <path d={iconBook.path} />
-                </svg>
+                <img src={BookLogo} alt="Book logo" />
               </Link>
               <div className="flex items-center pl-6 gap-4 divide-x divide-darkGray">
                 <Dropdown />
@@ -56,9 +47,9 @@ const App = () => {
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    fill={icon.fill || "none"}
+                    fill={"none"}
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke={icon.stroke || "none"}
+                    stroke={theme == "dark" ? "	#a845ef" : "#858585"}
                     strokeWidth={icon.strokeWidth || "0"}
                   >
                     <path d={icon.path} />
