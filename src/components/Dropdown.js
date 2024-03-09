@@ -24,7 +24,7 @@ const FontMenu = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex justify-center items-center gap-x-1.5 px-3 py-2 lg:text-lg text-sm font-semibold">
+        <Menu.Button className="inline-flex justify-center items-center gap-x-1.5 px-3 py-2 sm:text-lg text-sm font-semibold">
           {getDisplayFont(selectedFont)}
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-purple" aria-hidden="true" />
         </Menu.Button>
