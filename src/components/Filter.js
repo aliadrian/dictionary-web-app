@@ -71,7 +71,7 @@ const Filter = ({ handleSearch }) => {
         <input
           type="text"
           value={userInput}
-          className="w-full pl-4 lg:pr-72 py-4 dark:bg-darkerGray bg-lightGray transition-colors duration-500 rounded-2xl outline-none"
+          className="w-full pl-4 lg:pr-72 py-4 dark:bg-darkerGray bg-lightGray transition-colors duration-500 rounded-2xl outline-none focus:font-bold focus:placeholder:font-normal"
           placeholder={placeholderText}
           onChange={handleInputChange}
           onClick={handleInputClick}
