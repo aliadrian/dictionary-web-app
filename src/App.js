@@ -90,7 +90,7 @@ const App = () => {
           {error && <p>{error}</p>}
           {dictionaryData && (
             <div>
-              <h2>{word}</h2>
+              <h2 className="">{word}</h2>
             </div>
           )}
         </div>
