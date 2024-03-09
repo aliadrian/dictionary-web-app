@@ -24,7 +24,7 @@ const Filter = ({ handleSearch }) => {
     try {
       setLoading(true);
       const data = await handleSearch(userInput);
-      console.log('API Response:', data); // Add this line
+      console.log('API Response:', data);
 
       if (data && data.length > 0 && data[0].meanings) {
         setWordData(data[0]);
@@ -71,13 +71,13 @@ const Filter = ({ handleSearch }) => {
         <input
           type="text"
           value={userInput}
-          className="w-full pl-4 lg:pr-72 py-4 dark:bg-darkerGray bg-lightGray transition-colors duration-500 rounded-2xl"
+          className="w-full pl-4 lg:pr-72 py-4 dark:bg-darkerGray bg-lightGray transition-colors duration-500 rounded-2xl outline-none"
           placeholder={placeholderText}
           onChange={handleInputChange}
           onClick={handleInputClick}
           onKeyDown={handleKeyDown}
         />
-        <div className="flex items-center justify-center rounded-full bg-purple w-14 sm:h-12 h-11">
+        <div className="flex items-center justify-center rounded-full bg-purple w-14 sm:h-12 h-11 hover:cursor-pointer active:cursor-pointer focus:cursor-pointer">
           <buttton onClick={handleSearchButtonClick}>
             <svg
               width="22"

@@ -865,6 +865,11 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -919,9 +924,21 @@ video {
   font-family: monospace, "monospace";
 }
 
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
+}
+
+.focus\:cursor-pointer:focus {
+  cursor: pointer;
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.active\:cursor-pointer:active {
+  cursor: pointer;
 }
 
 :is(.dark .dark\:bg-black) {
