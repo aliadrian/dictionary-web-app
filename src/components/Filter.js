@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { IconSearch } from './Icons';
 
 const Filter = ({ handleSearch }) => {
   const [userInput, setUserInput] = useState('');
   const [localError, setLocalError] = useState(null);
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [wordData, setWordData] = useState('');
   const [enterPressed, setEnterPressed] = useState(false);
 
@@ -15,7 +16,7 @@ const Filter = ({ handleSearch }) => {
   const placeholderText = 'Search for a word...';
   const iconSearch = IconSearch;
 
-  const handleSearchButtonClick = async () => {
+  const handleSearchButtonClick = useCallback(async () => {
     if (userInput.trim() === '') {
       setLocalError('Please enter a valid word.');
       return;
@@ -46,7 +47,7 @@ const Filter = ({ handleSearch }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userInput, handleSearch, setLocalError, setLoading, setWordData]);
 
   const handleInputChange = (e) => {
     setUserInput(e.target.value.toLowerCase());
@@ -78,7 +79,7 @@ const Filter = ({ handleSearch }) => {
           onKeyDown={handleKeyDown}
         />
         <div className="flex items-center justify-center rounded-full bg-purple w-14 sm:h-12 h-11 hover:cursor-pointer active:cursor-pointer focus:cursor-pointer">
-          <buttton onClick={handleSearchButtonClick}>
+          <button onClick={handleSearchButtonClick}>
             <svg
               width="22"
               height="22"
@@ -90,7 +91,7 @@ const Filter = ({ handleSearch }) => {
             >
               <path d={iconSearch.path} />
             </svg>
-          </buttton>
+          </button>
         </div>
       </div>
       {loading && <div role="status">
