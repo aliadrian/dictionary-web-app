@@ -25,7 +25,7 @@ const Filter = ({ handleSearch }) => {
     try {
       setLoading(true);
       const data = await handleSearch(userInput);
-      console.log('API Response:', data);
+      // console.log('API Response:', data);
 
       if (data && data.length > 0 && data[0].meanings) {
         setWordData(data[0]);
