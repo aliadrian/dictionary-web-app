@@ -25,7 +25,7 @@ const Content = ({ audioUrl, dictionaryData, error, sourceUrls }) => {
             </div>
             <div>
               <button className="flex items-center justify-center rounded-full w-[3rem] h-[3rem] sm:h-[4.5rem] sm:w-[4.5rem] bg-lightPurple hover:cursor-pointer active:cursor-pointer focus:cursor-pointer dark:bg-darkPurple transition-colors duration-500" onClick={start}>
-                <img src={PlayIcon} className="rotate-180 w-4 h-4 sm:w-6 sm:h-6" alt="Play audio" />
+                <img src={PlayIcon} className="w-4 h-4 sm:w-6 sm:h-6" alt="Play audio" />
               </button>
             </div>
           </div>
