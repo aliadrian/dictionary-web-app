@@ -84,7 +84,7 @@ const Content = ({ audioUrl, dictionaryData, error, sourceUrls }) => {
             <div className='sm:flex items-center gap-2'>
               <div className='sm:flex items-center gap-4'>
                 <p className='text-darkGray text-sm'>Source</p>
-                <a target='_blank' rel="noreferrer" className='underline text-mildBlack dark:text-gray text-sm' href={sourceUrls[0]}>{sourceUrls[0]}</a>
+                <a target='_blank' rel="noreferrer" className='underline text-mildBlack dark:text-gray text-sm pr-1 sm:pr-0' href={sourceUrls[0]}>{sourceUrls[0]}</a>
                 <svg
                   className='inline'
                   width="16"

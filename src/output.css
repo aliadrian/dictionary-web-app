@@ -1157,6 +1157,10 @@ video {
     padding-top: 1rem;
   }
 
+  .sm\:pr-0 {
+    padding-right: 0px;
+  }
+
   .sm\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
