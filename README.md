@@ -28,7 +28,7 @@ This is a solution to the [Dictionary web app](https://www.frontendmentor.io/cha
 
 <h2>Links</h2>
 
-- Live Site URL: https://countries-api-by-adrian.vercel.app/
+- Live Site URL: https://dictionary-web-app-by-adrian.vercel.app/
 <br>
 
 ## Table of contents
