@@ -24,7 +24,7 @@
 
 </div>
 
-This is a solution to the [Dictionary web app](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL)). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Dictionary web app](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 <h2>Links</h2>
 
