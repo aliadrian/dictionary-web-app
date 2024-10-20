@@ -20,7 +20,7 @@
 
 <div align="center">
 
-![](src/assets/img/desktop-preview.jpg)
+![](src/assets/img/desktop-preview.PNG)
 
 </div>
 
